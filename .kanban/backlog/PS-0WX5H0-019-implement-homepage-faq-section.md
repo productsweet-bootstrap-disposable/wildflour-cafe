@@ -46,3 +46,10 @@ Add a static FAQ section component to the homepage template, positioned after "V
 - All four Q&A pairs appear with the exact copy specified above, in order.
 - Section styling matches the design system (no hard borders/dividers, left-aligned, consistent with existing typography/spacing tokens).
 - No regressions to the "Visit us" section or footer layout/content.
+
+## Completion Notes
+
+- Outcome: Implemented FAQ section in `src/pages/index.astro`, positioned between "Visit us" and the footer, using the exact copy specified (bookings, gluten-free, whole cakes, parking). Styled per design system: no hard divider lines, alternating surface tint (`--flour`) for separation, left-aligned text, consistent typography/spacing with existing sections. PR: https://github.com/productsweet-bootstrap-disposable/wildflour-cafe/pull/7 (branch feature/PS-0WX5H0-019).
+- Verification actually run: PR opened; CI (`pr-gate`) was triggered and was still `in_progress` as of last poll in this session. No local test execution is available to this agent — the PR's CI is the sole verification channel. A self-wake is armed on this PR so a follow-up session will pick up the CI result (success or failure) automatically.
+- Documentation updated: None required — this is a content/UI change only; no architecture, knowledge, or current-state doc impact.
+- Follow-up tasks created: None. If CI comes back red, the wake-triggered session will diagnose via repo.get-failing-checks and fix in place.
