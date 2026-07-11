@@ -1,4 +1,6 @@
 ---
+import { openingHours } from '../data/hours';
+
 interface Props {
   title: string;
   description: string;
@@ -29,6 +31,15 @@ const { title, description, active = 'home' } = Astro.props;
     </header>
     <slot />
     <footer class="site-footer">
+      <p class="hours" aria-label="Opening hours">
+        <span class="hours-label">Open</span>
+        {openingHours.map((day, i) => (
+          <>
+            <span class="hours-entry">{day.label}: {day.hours}</span>
+            {i < openingHours.length - 1 ? <span class="hours-sep">·</span> : null}
+          </>
+        ))}
+      </p>
       <p>
         14 Aro Street, Aro Valley, Wellington ·
         <a href="mailto:hello@wildflourcafe.nz">hello@wildflourcafe.nz</a> ·
@@ -114,6 +125,27 @@ const { title, description, active = 'home' } = Astro.props;
     border-top: 1px solid var(--flour);
     background: var(--flour);
     text-align: center;
+  }
+  .site-footer .hours {
+    margin: 0 0 0.75rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 0.6rem;
+    justify-content: center;
+    align-items: baseline;
+  }
+  .hours-label {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--terracotta-deep);
+  }
+  .hours-entry {
+    font-size: 0.95rem;
+  }
+  .hours-sep {
+    opacity: 0.5;
   }
   .site-footer .fine {
     font-size: 0.85rem;
