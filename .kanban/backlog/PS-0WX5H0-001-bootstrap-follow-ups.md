@@ -80,7 +80,7 @@ Refinement is a human / agent activity over markdown files. No ambient inputs.
 ```yaml
 - stage_id: S1
   title: "Verify and replace placeholder content"
-  status: designed
+  status: done
   summary: "Confirm the deploy actually reaches the live URL and start replacing the hello-world content with the real site."
   child_task_ids:
     - "PS-0WX5H0-002"

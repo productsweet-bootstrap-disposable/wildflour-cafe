@@ -1,10 +1,9 @@
 ---
 title: "Verify The Deploy Reaches The Live URL"
 id: "PS-0WX5H0-002"
-status: backlog
+status: done
 template_type: implementation-task
 parent_task_id: "PS-0WX5H0-001"
-backlog_state: refining
 created: "2026-07-11"
 updated: "2026-07-11"
 priority: high
@@ -94,8 +93,11 @@ investigate before retrying.
 
 ```yaml
 - question: "Is the live URL right? If the bootstrap took the *.amplifyapp.com fallback per AI6P-249 Q5, also confirm that the seeded `Bind a custom domain` task is on the backlog."
-  status: open
-  thread: []
+  status: answered
+  thread:
+    - author: "Wildflour Café"
+      created: "2026-07-11"
+      body: "Yes — the bootstrap took the *.amplifyapp.com fallback and the live URL is correct. The seeded `Bind a custom domain` task (PS-0WX5H0-006) is confirmed on the backlog."
 ```
 
 ## Documentation Update Plan
@@ -110,12 +112,17 @@ investigate before retrying.
 
 ## Completion Notes
 
-Fill this in when the task is done.
-
-- Outcome:
-- Verification actually run:
-- Documentation updated:
-- Follow-up tasks created:
+- Outcome: End-to-end deploy reproduced from a real human-authored change (the PS-0WX5H0-003
+  site-content PR #4, squash-merged to `main`), not the bootstrap's synthetic commit.
+- Verification actually run: `deploy-low` run
+  https://github.com/productsweet-bootstrap-disposable/wildflour-cafe/actions/runs/29145303892
+  concluded `success` (07:55:46 → 07:56:42 UTC, ~56s merge-to-live); `curl` of
+  https://main.det2fdp7wukhm.amplifyapp.com returned 200 with the new content
+  (`<title>Wildflour Café — Aro Valley, Wellington</title>` — the body visibly changed from the
+  hello-world page).
+- Documentation updated: none needed beyond `.agent/current-state.md`, already updated by
+  PS-0WX5H0-003 in the same shipping train.
+- Follow-up tasks created: none — the deploy path works as wired.
 
 ## Definition of Done Gate
 
