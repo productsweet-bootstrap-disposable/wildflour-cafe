@@ -28,10 +28,11 @@ blockers: []
 - [Entry Points for Agents](#entry-points-for-agents)
 
 ## At a Glance
-- **Phase:** Live — first deploy verified end-to-end against the bound URL.
-- **Health:** Green — initial build passed; no real content yet.
+- **Phase:** Live — real site content shipped and serving.
+- **Health:** Green — build passing; homepage + menu live.
 - **Deploy verified:** HTTPS 200 at https://main.det2fdp7wukhm.amplifyapp.com.
-- **Next up:** Refine the seeded `Bootstrap Follow-ups` epic in `.kanban/backlog/`.
+- **Next up:** Wholesale enquiry section (todo); harden-for-real-use follow-ups (S2 of the
+  `Bootstrap Follow-ups` epic).
 - **Blockers:** None.
 
 ## Bootstrap Decisions
@@ -65,9 +66,16 @@ Captured at bootstrap time and pinned here so the project starts with real conte
 - `.agent/` and `.kanban/` lane structure committed with this `current-state.md`, the seeded
   `Bootstrap Follow-ups` epic, and the always-seeded follow-up tasks.
 
+### Site Content
+- Real homepage live: hero, feature trio (sourdough / coffee / seasonal cabinet), story, and
+  visit sections in the Wildflour brand (PS-0WX5H0-003).
+- `/menu` page live with Coffee, Cabinet, and Lunch sections (PS-0WX5H0-009).
+- Shared `Base.astro` layout owns the header/nav/footer and global styles; brand favicon shipped.
+
 ## Not Yet Shipped
 
-- Real content. The site currently serves a framework hello-world.
+- Opening hours are not shown anywhere on the site — customers currently have to email to ask.
+- Wholesale enquiry section (PS-0WX5H0-011, todo).
 - Custom domain — the site is on the `*.amplifyapp.com` fallback; bind a real domain via the `Bind a custom domain` task seeded in `.kanban/backlog/`.
 - Branch protection on `main` (`Set up branch protection on main` task seeded in
   `.kanban/backlog/`).

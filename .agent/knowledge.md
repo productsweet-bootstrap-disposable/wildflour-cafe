@@ -25,15 +25,21 @@ last_updated: "2026-07-11"
 ## Project Identity
 
 **Name:** wildflour-cafe
-**Purpose:** <!-- One or two sentences describing what this website is for and who it serves. -->
+**Purpose:** The public website for Wildflour Café, a neighbourhood bakery-café at 14 Aro Street,
+Aro Valley, Wellington. It tells locals what we bake, what's on the menu, and how to find us —
+optimised for someone deciding on their phone whether to walk up the hill.
+
+**Brand voice:** Warm, plain-spoken, a little wry. Short sentences. We say "gone by noon", not
+"subject to availability". Palette: cream (`#faf6ef`), espresso (`#2e2118`), terracotta accent
+(`#c4602d`). Display type is Georgia (serif); body is the system sans stack.
 
 ## Goals
 
-<!-- Numbered list of the project's primary goals. Three to five is enough. -->
-
-1. <!-- Goal one -->
-2. <!-- Goal two -->
-3. <!-- Goal three -->
+1. Show today's offer clearly — menu, cabinet, and coffee — so customers arrive already decided.
+2. Convert passing search traffic ("bakery aro valley") into first visits; SEO and Core Web Vitals
+   are a priority (the site is fully static for this reason).
+3. Grow wholesale and pre-order channels without adding counter workload.
+4. Stay small and maintainable: one content editor, no CMS until the menu outgrows markdown.
 
 ## Key Constraints
 
