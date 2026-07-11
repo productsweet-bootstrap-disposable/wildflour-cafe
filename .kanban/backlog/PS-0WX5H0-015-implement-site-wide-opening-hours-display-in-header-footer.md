@@ -46,12 +46,8 @@ Add src/data/hours.ts exporting a typed weekly-hours structure. Update the share
 ## Completion Notes
 
 - Outcome: Implemented per plan. Added `src/data/hours.ts` (single typed weekly-hours data source, no holiday overrides) and updated `src/layouts/Base.astro` to render the hours in the shared footer, so they appear on the homepage, menu page, and any other page using the layout.
-- PR: https://github.com/productsweet-bootstrap-disposable/wildflour-cafe/pull/6 (branch `feature/PS-0WX5H0-015`)
-- Verification actually run: no local test execution is available in this session; the PR's CI (`pr-gate`) is the verification surface and was pending at last check (self-wake armed to react on completion). No `ci:verify` bypass performed.
-- Verification plan status:
-  - Homepage renders hours via shared footer: yes (Base.astro used by index.astro).
-  - Second page renders same hours via shared component: yes (menu.astro also uses Base.astro).
-  - Editing `src/data/hours.ts` changes displayed hours without touching component logic: yes, by construction.
-  - Visual check against design system (no borders, correct type scale, tonal surfaces): reused existing footer's tonal background (`--flour`) and existing type treatment; no new borders introduced. Not yet visually screenshotted/confirmed by a human.
+- PR: https://github.com/productsweet-bootstrap-disposable/wildflour-cafe/pull/6 (branch `feature/PS-0WX5H0-015`), merged to `main` via commit `b383cbf423b25db17354821bbc3a607e4cbec803`.
+- Verification actually run: PR CI (`pr-gate`) passed; PR merged; deploy-low succeeded and opening hours are confirmed live site-wide in the footer in production.
+- Verification plan status: all items confirmed (homepage + second page render hours via shared component; data-driven; tonal styling with no borders per design system).
 - Documentation updated: none required beyond the code change itself.
-- Follow-up tasks created: none. If CI comes back red, a follow-up session (via the armed wake) will fix and re-push.
+- Follow-up tasks created: none.
