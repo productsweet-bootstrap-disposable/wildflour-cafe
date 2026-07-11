@@ -3,7 +3,7 @@ title: Add homepage FAQ section
 id: PS-0WX5H0-017
 status: intake
 template_type: feature-request
-intake_state: ready-for-dev
+intake_state: closed
 delivery_task_ids:
   - PS-0WX5H0-019
 created: 2026-07-11
