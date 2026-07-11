@@ -1,5 +1,26 @@
 ---
 import Base from '../layouts/Base.astro';
+
+const faqs = [
+  {
+    question: 'Do you take bookings?',
+    answer: 'No — walk-in only.',
+  },
+  {
+    question: 'Do you have gluten-free options?',
+    answer:
+      'Yes — a rotating gluten-free cabinet option available daily (note: this does not include the bread).',
+  },
+  {
+    question: 'Can we order whole cakes?',
+    answer: "Yes — whole cakes are available with 3 days' notice, ordered via email.",
+  },
+  {
+    question: 'Where can we park?',
+    answer:
+      'Street parking on Aro St is limited; the Willis St car park is about a 5 minute walk away.',
+  },
+];
 ---
 <Base
   title="Wildflour Café — Aro Valley, Wellington"
@@ -67,6 +88,18 @@ import Base from '../layouts/Base.astro';
         <a href="mailto:hello@wildflourcafe.nz">hello@wildflourcafe.nz</a>.
       </p>
     </section>
+
+    <section id="faq" class="faq" aria-label="Frequently asked questions">
+      <h2>FAQ</h2>
+      <dl class="faq-list">
+        {faqs.map((item) => (
+          <div class="faq-item">
+            <dt>{item.question}</dt>
+            <dd>{item.answer}</dd>
+          </div>
+        ))}
+      </dl>
+    </section>
   </main>
 </Base>
 
@@ -121,5 +154,30 @@ import Base from '../layouts/Base.astro';
   .visit {
     padding: 2.5rem 0 0;
     max-width: 44rem;
+  }
+  .faq {
+    padding: 2.5rem 0 3rem;
+    max-width: 44rem;
+  }
+  .faq-list {
+    margin: 1rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .faq-item {
+    background: #fff;
+    border-radius: 12px;
+    padding: 1.25rem 1.5rem;
+  }
+  .faq-item:nth-child(even) {
+    background: var(--flour);
+  }
+  .faq-item dt {
+    font-weight: 600;
+    margin: 0 0 0.4rem;
+  }
+  .faq-item dd {
+    margin: 0;
   }
 </style>
