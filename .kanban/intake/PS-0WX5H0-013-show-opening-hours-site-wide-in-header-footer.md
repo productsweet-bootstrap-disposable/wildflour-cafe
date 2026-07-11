@@ -3,7 +3,7 @@ title: Show opening hours site-wide in header/footer
 id: PS-0WX5H0-013
 status: intake
 template_type: user-story
-intake_state: ready-for-dev
+intake_state: closed
 delivery_task_ids:
   - PS-0WX5H0-015
 created: 2026-07-11
