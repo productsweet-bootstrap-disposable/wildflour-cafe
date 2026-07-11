@@ -1,0 +1,124 @@
+---
+import Base from '../layouts/Base.astro';
+
+const espresso = [
+  { name: 'Espresso / long black', price: '4.5' },
+  { name: 'Flat white', price: '5.5' },
+  { name: 'Batch filter', price: '5.0' },
+  { name: 'Single-origin pourover', price: '7.0' },
+  { name: 'Hot chocolate (62% dark)', price: '5.5' },
+];
+
+const cabinet = [
+  { name: 'Sourdough loaf — whole', price: '9.0' },
+  { name: 'Croissant, cultured butter', price: '5.5' },
+  { name: 'Cardamom knot', price: '6.0' },
+  { name: 'Seasonal fruit galette', price: '7.5' },
+  { name: 'Pie of the week', price: '9.5' },
+];
+
+const lunch = [
+  { name: 'Toastie — three cheese & pickled onion', price: '12.0' },
+  { name: 'Soup of the day, sourdough on the side', price: '13.5' },
+  { name: 'Seasonal grain bowl', price: '16.0' },
+];
+---
+<Base
+  title="Menu — Wildflour Café"
+  description="Today's menu at Wildflour Café: espresso and filter coffee, the daily cabinet bake, and seasonal lunches."
+  active="menu"
+>
+  <main>
+    <section class="menu-intro">
+      <h1>The menu</h1>
+      <p>
+        Everything is baked in-house each morning and the cabinet changes with the seasons — when
+        something sells out, it's gone until tomorrow. Prices in NZD.
+      </p>
+    </section>
+
+    <section class="menu-section" aria-labelledby="menu-coffee">
+      <h2 id="menu-coffee">Coffee</h2>
+      <ul>
+        {espresso.map((item) => (
+          <li>
+            <span class="item-name">{item.name}</span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="price">{item.price}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="menu-section" aria-labelledby="menu-cabinet">
+      <h2 id="menu-cabinet">From the cabinet</h2>
+      <ul>
+        {cabinet.map((item) => (
+          <li>
+            <span class="item-name">{item.name}</span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="price">{item.price}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="menu-section" aria-labelledby="menu-lunch">
+      <h2 id="menu-lunch">Lunch, from 11am</h2>
+      <ul>
+        {lunch.map((item) => (
+          <li>
+            <span class="item-name">{item.name}</span>
+            <span class="dots" aria-hidden="true"></span>
+            <span class="price">{item.price}</span>
+          </li>
+        ))}
+      </ul>
+      <p class="note">
+        Dietaries welcome — most of the cabinet can be made dairy-free with a day's notice.
+      </p>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .menu-intro {
+    padding: clamp(2.5rem, 8vw, 4rem) 0 1rem;
+    max-width: 44rem;
+  }
+  .menu-intro h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  .menu-section {
+    max-width: 44rem;
+    padding: 1.5rem 0;
+  }
+  .menu-section h2 {
+    font-size: 1.4rem;
+    color: var(--terracotta-deep);
+  }
+  .menu-section ul {
+    list-style: none;
+    margin: 0.5rem 0 0;
+    padding: 0;
+  }
+  .menu-section li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.4rem 0;
+  }
+  .dots {
+    flex: 1;
+    border-bottom: 1px dotted var(--crust);
+    opacity: 0.5;
+  }
+  .price {
+    font-variant-numeric: tabular-nums;
+  }
+  .note {
+    font-size: 0.9rem;
+    opacity: 0.75;
+    margin-top: 1rem;
+  }
+</style>

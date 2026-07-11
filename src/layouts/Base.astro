@@ -1,0 +1,122 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  active?: 'home' | 'menu';
+}
+const { title, description, active = 'home' } = Astro.props;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/">Wildflour <span>Café</span></a>
+      <nav aria-label="Main">
+        <a href="/" aria-current={active === 'home' ? 'page' : undefined}>Home</a>
+        <a href="/menu" aria-current={active === 'menu' ? 'page' : undefined}>Menu</a>
+        <a href="/#story">Our Story</a>
+        <a href="/#visit">Visit</a>
+      </nav>
+    </header>
+    <slot />
+    <footer class="site-footer">
+      <p>
+        14 Aro Street, Aro Valley, Wellington ·
+        <a href="mailto:hello@wildflourcafe.nz">hello@wildflourcafe.nz</a> ·
+        <a href="https://instagram.com" rel="noopener">@wildflourwelly</a>
+      </p>
+      <p class="fine">© 2026 Wildflour Café. Baked with patience.</p>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --cream: #faf6ef;
+    --flour: #f1e8d8;
+    --espresso: #2e2118;
+    --crust: #8a5a33;
+    --terracotta: #c4602d;
+    --terracotta-deep: #a04618;
+  }
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--espresso);
+    font-family: 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+  }
+  h1,
+  h2,
+  h3 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: 600;
+    line-height: 1.15;
+    margin: 0 0 0.5rem;
+  }
+  a {
+    color: var(--terracotta-deep);
+  }
+  .site-header {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem 1.5rem;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 1.25rem clamp(1rem, 5vw, 4rem);
+    border-bottom: 1px solid var(--flour);
+  }
+  .brand {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    color: var(--espresso);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+  .brand span {
+    color: var(--terracotta);
+    font-style: italic;
+  }
+  .site-header nav {
+    display: flex;
+    gap: 1.25rem;
+  }
+  .site-header nav a {
+    color: var(--espresso);
+    text-decoration: none;
+    padding: 0.25rem 0;
+    border-bottom: 2px solid transparent;
+  }
+  .site-header nav a:hover,
+  .site-header nav a[aria-current='page'] {
+    border-bottom-color: var(--terracotta);
+  }
+  main {
+    max-width: 68rem;
+    margin: 0 auto;
+    padding: 0 clamp(1rem, 5vw, 4rem);
+  }
+  .site-footer {
+    margin-top: 4rem;
+    padding: 2rem clamp(1rem, 5vw, 4rem);
+    border-top: 1px solid var(--flour);
+    background: var(--flour);
+    text-align: center;
+  }
+  .site-footer .fine {
+    font-size: 0.85rem;
+    opacity: 0.7;
+  }
+</style>

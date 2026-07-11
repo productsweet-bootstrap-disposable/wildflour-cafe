@@ -1,10 +1,9 @@
 ---
 title: "Replace The Hello-World Site With Real Content"
 id: "PS-0WX5H0-003"
-status: backlog
+status: done
 template_type: implementation-task
 parent_task_id: "PS-0WX5H0-001"
-backlog_state: refining
 created: "2026-07-11"
 updated: "2026-07-11"
 priority: high
@@ -89,8 +88,11 @@ Content authoring. No ambient inputs.
 
 ```yaml
 - question: "Is there pre-existing brand copy / imagery to start from, or does this task author it from scratch?"
-  status: open
-  thread: []
+  status: answered
+  thread:
+    - author: "Wildflour Café"
+      created: "2026-07-11"
+      body: "Authored from scratch: brand voice, palette, and copy established in this task (terracotta/cream palette, Georgia display serif). Imagery deferred — the launch site is typographic."
 ```
 
 ## Documentation Update Plan
@@ -105,12 +107,18 @@ Content authoring. No ambient inputs.
 
 ## Completion Notes
 
-Fill this in when the task is done.
-
-- Outcome:
-- Verification actually run:
-- Documentation updated:
-- Follow-up tasks created:
+- Outcome: Homepage replaced with the real Wildflour Café site — hero, feature trio, story, and
+  visit sections — plus a shared `Base.astro` layout, brand favicon, and OG title/description
+  meta. Shipped alongside PS-0WX5H0-009 (`/menu`) on branch
+  `feature/PS-0WX5H0-003-wildflour-site`.
+- Verification actually run: `npm run typecheck` (astro check) + `npm run build` locally;
+  `pr-gate` full lane green on the PR; deployed page manually swept for heading hierarchy and
+  contrast (body text #2e2118 on #faf6ef ≥ 4.5:1).
+- Documentation updated: `.agent/current-state.md` (Shipped Capabilities — real homepage),
+  `.agent/knowledge.md` (Project Identity + Goals filled in).
+- Follow-up tasks created: PS-0WX5H0-010 (online ordering, intake),
+  PS-0WX5H0-011 (wholesale enquiry section, todo). OG image asset still default — folded into
+  future brand-imagery work rather than a standalone task.
 
 ## Definition of Done Gate
 

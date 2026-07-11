@@ -1,17 +1,125 @@
 ---
-const projectName = 'wildflour-cafe';
+import Base from '../layouts/Base.astro';
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{projectName}</title>
-  </head>
-  <body>
-    <main>
-      <h1>wildflour-cafe</h1>
-      <p>Managed by Product Sweet bootstrap (AI6P-249).</p>
-    </main>
-  </body>
-</html>
+<Base
+  title="Wildflour Café — Aro Valley, Wellington"
+  description="Neighbourhood bakery-café in Aro Valley. Sourdough baked before sunrise, single-origin espresso, seasonal lunches."
+  active="home"
+>
+  <main>
+    <section class="hero">
+      <p class="kicker">Aro Valley, Wellington</p>
+      <h1>Baked before sunrise.<br />Gone by noon.</h1>
+      <p class="lede">
+        Wildflour is a small neighbourhood bakery-café. We mill heritage grains, ferment our
+        sourdough slowly, and pull single-origin espresso — everything made in-house, every day.
+      </p>
+      <a class="cta" href="/menu">See today's menu</a>
+    </section>
+
+    <section class="features" aria-label="What we do">
+      <article>
+        <h2>Slow sourdough</h2>
+        <p>
+          Our loaves prove for 36 hours on stone-milled Canterbury flour. Crackly crust, custardy
+          crumb — no shortcuts, no additives.
+        </p>
+      </article>
+      <article>
+        <h2>Serious coffee</h2>
+        <p>
+          A rotating single-origin espresso from Wellington roasters, dialled in every morning, plus
+          a quiet filter list for the patient.
+        </p>
+      </article>
+      <article>
+        <h2>Seasonal cabinet</h2>
+        <p>
+          Cardamom knots, seasonal galettes, and a savoury pie of the week — the cabinet follows the
+          market, not the other way round.
+        </p>
+      </article>
+    </section>
+
+    <section id="story" class="story">
+      <h2>Our story</h2>
+      <p>
+        Wildflour started as a Saturday market stall in 2022 — one bench, one oven, and a queue we
+        never expected. Two years later we took over the old dairy on Aro Street and never looked
+        back. We bake for our neighbours first: the shelves are stocked for the morning rush, and
+        when it's gone, it's gone.
+      </p>
+      <p>
+        We keep things small on purpose. One bake a day, a menu that fits on a chalkboard, and
+        coffee made by people who know your order before you reach the counter.
+      </p>
+    </section>
+
+    <section id="visit" class="visit">
+      <h2>Visit us</h2>
+      <p>
+        You'll find us at <strong>14 Aro Street, Aro Valley, Wellington</strong> — look for the
+        terracotta awning. Come early for the full cabinet; the sourdough rarely makes it past
+        lunchtime.
+      </p>
+      <p>
+        Questions, wholesale, or a very large cake? Email
+        <a href="mailto:hello@wildflourcafe.nz">hello@wildflourcafe.nz</a>.
+      </p>
+    </section>
+  </main>
+</Base>
+
+<style>
+  .hero {
+    padding: clamp(3rem, 10vw, 6rem) 0 3rem;
+    max-width: 44rem;
+  }
+  .kicker {
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.8rem;
+    color: var(--terracotta-deep);
+    margin: 0 0 1rem;
+  }
+  .hero h1 {
+    font-size: clamp(2.2rem, 6vw, 3.6rem);
+  }
+  .lede {
+    font-size: 1.15rem;
+    max-width: 38rem;
+  }
+  .cta {
+    display: inline-block;
+    margin-top: 1rem;
+    background: var(--terracotta);
+    color: #fff;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 999px;
+    font-weight: 600;
+  }
+  .cta:hover {
+    background: var(--terracotta-deep);
+  }
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.5rem;
+    padding: 2rem 0;
+  }
+  .features article {
+    background: #fff;
+    border: 1px solid var(--flour);
+    border-radius: 12px;
+    padding: 1.5rem;
+  }
+  .features h2 {
+    font-size: 1.25rem;
+  }
+  .story,
+  .visit {
+    padding: 2.5rem 0 0;
+    max-width: 44rem;
+  }
+</style>
