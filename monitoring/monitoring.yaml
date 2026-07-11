@@ -1,0 +1,58 @@
+# Static-frontend health-signal alarms — AI6P-1566, region-split by AI6P-1720.
+#
+# A minimal CloudWatch alarm set over the infra metrics that DO exist for a
+# static Amplify site. This tenant-region stack carries the Amplify build-failure
+# signal ONLY. The custom-domain CloudFront 5xx signal lives in its OWN stack —
+# `monitoring/monitoring-cloudfront.yaml` — applied in us-east-1 (AI6P-1720),
+# because AWS/CloudFront metrics publish only to us-east-1. No application log
+# groups exist for a static frontend, so this is alarms over infra metrics, NOT
+# log-line metric filters.
+#
+# Health-signal ONLY — none of these alarms wire an AlarmAction (no SNS / no
+# paging). Their OK/ALARM state is the signal a future cross-account ingestion
+# consumer reads by the "wildflour-cafe-" alarm-name prefix (matching the
+# webapp observability baseline posture). That platform-ingestion hop is a
+# separate, operator-gated task.
+#
+# Emitted deterministically by the bootstrap materialiser and applied by the
+# tenant deploy workflow (deploy-low.yml) via `aws cloudformation deploy`.
+# Templated placeholders: PROJECT_NAME, PROJECT_SLUG.
+AWSTemplateFormatVersion: '2010-09-09'
+Description: >-
+  Product Sweet static-frontend health-signal alarms for wildflour-cafe
+  (bootstrap monitoring baseline, AI6P-1566). Health-signal only — no paging.
+
+Parameters:
+  AmplifyAppId:
+    Type: String
+    Description: >-
+      The Amplify app id whose hosting metrics are alarmed. Supplied by the
+      deploy workflow from the PRODUCTSWEET_AMPLIFY_APP_ID repo variable.
+  AmplifyBranchName:
+    Type: String
+    Default: main
+    Description: The Amplify branch name (the low environment deploys `main`).
+
+Resources:
+  # Amplify deploy (build) failure signal. Fires on the ProductSweet/Deploy
+  # BuildFailure custom metric, which the tenant deploy workflow emits (value 1)
+  # when a RELEASE job does not reach SUCCEED. TreatMissingData notBreaching so a
+  # clean history reads OK rather than INSUFFICIENT_DATA.
+  AmplifyBuildFailureAlarm:
+    Type: AWS::CloudWatch::Alarm
+    Properties:
+      AlarmName: wildflour-cafe-amplify-build-failure
+      AlarmDescription: >-
+        Amplify deploy (build) failure signal for wildflour-cafe.
+      Namespace: ProductSweet/Deploy
+      MetricName: BuildFailure
+      Dimensions:
+        - Name: App
+          Value: !Ref AmplifyAppId
+      Statistic: Sum
+      Period: 300
+      EvaluationPeriods: 1
+      DatapointsToAlarm: 1
+      Threshold: 1
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      TreatMissingData: notBreaching
