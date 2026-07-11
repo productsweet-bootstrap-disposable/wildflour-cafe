@@ -1,5 +1,5 @@
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://pending-first-deploy.example/',
+  site: 'https://main.det2fdp7wukhm.amplifyapp.com',
 });
