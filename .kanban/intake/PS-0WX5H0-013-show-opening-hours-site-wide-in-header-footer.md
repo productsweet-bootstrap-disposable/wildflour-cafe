@@ -3,11 +3,12 @@ title: Show opening hours site-wide in header/footer
 id: PS-0WX5H0-013
 status: intake
 template_type: user-story
-intake_state: closed
+intake_state: ready-for-dev
 delivery_task_ids:
   - PS-0WX5H0-015
+  - PS-0WX5H0-032
 created: 2026-07-11
-updated: 2026-07-11
+updated: 2026-07-12
 priority: medium
 owner: AI agent + user
 source: Customer emails asking when we're open
