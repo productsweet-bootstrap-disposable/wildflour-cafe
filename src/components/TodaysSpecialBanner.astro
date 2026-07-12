@@ -1,0 +1,60 @@
+---
+interface Props {
+  text: string;
+}
+const { text } = Astro.props;
+---
+{text ? (
+  <p class="todays-special" role="note">
+    <svg
+      class="star"
+      viewBox="0 0 24 24"
+      width="16"
+      height="16"
+      aria-hidden="true"
+      focusable="false"
+    >
+      <path
+        fill="currentColor"
+        d="M12 2.5l2.6 6.2 6.7.5-5.1 4.4 1.6 6.5L12 16.6 6.2 20.1l1.6-6.5-5.1-4.4 6.7-.5z"
+      />
+    </svg>
+    <span class="label">Today's special:</span>
+    <span class="text">{text}</span>
+  </p>
+) : null}
+
+<style>
+  .todays-special {
+    margin: 0 0 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--flour);
+    color: var(--terracotta-deep);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    max-width: fit-content;
+    white-space: nowrap;
+  }
+  .star {
+    flex-shrink: 0;
+    color: var(--terracotta);
+  }
+  .label {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-size: 0.75rem;
+  }
+  .text {
+    color: var(--espresso);
+  }
+  @media (max-width: 40rem) {
+    .todays-special {
+      max-width: 100%;
+      white-space: normal;
+    }
+  }
+</style>
