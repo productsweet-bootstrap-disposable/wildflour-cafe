@@ -63,6 +63,11 @@ Optional at first intake. Fill this in during refinement before generating a dev
   thread:
     - role: user
       text: 'Digital gift cards (email delivery), physical (in-store cards), or both? Recommendation: start with digital-only for faster launch and easier fulfillment, add physical later if demand supports it.'
+- question: Should gift card values be fixed denominations (e.g. $25/$50/$100) or any custom amount? No clear recommendation — needs a product/finance decision.
+  status: open
+  thread:
+    - role: user
+      text: Should gift card values be fixed denominations (e.g. $25/$50/$100) or any custom amount? No clear recommendation — needs a product/finance decision.
 ```
 
 ## Refinement Notes
