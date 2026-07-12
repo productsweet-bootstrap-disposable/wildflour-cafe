@@ -68,6 +68,11 @@ Optional at first intake. Fill this in during refinement before generating a dev
   thread:
     - role: user
       text: Should gift card values be fixed denominations (e.g. $25/$50/$100) or any custom amount? No clear recommendation — needs a product/finance decision.
+- question: Do we build/buy gift card processing (expiry, balance tracking, partial redemption, fraud/refund handling) in-house, or integrate a third-party gift card provider? No clear recommendation — this materially changes scope and needs a build-vs-buy call before estimation.
+  status: open
+  thread:
+    - role: user
+      text: Do we build/buy gift card processing (expiry, balance tracking, partial redemption, fraud/refund handling) in-house, or integrate a third-party gift card provider? No clear recommendation — this materially changes scope and needs a build-vs-buy call before estimation.
 ```
 
 ## Refinement Notes
