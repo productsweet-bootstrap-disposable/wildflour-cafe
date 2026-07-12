@@ -27,6 +27,30 @@ const { title, description, active = 'home' } = Astro.props;
         <a href="/menu" aria-current={active === 'menu' ? 'page' : undefined}>Menu</a>
         <a href="/#story">Our Story</a>
         <a href="/#visit">Visit</a>
+        <a
+          class="icon-link"
+          href="https://instagram.com/wildflourcafe"
+          target="_blank"
+          rel="noopener"
+          aria-label="Wildflour Café on Instagram"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+            focusable="false"
+          >
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
       </nav>
     </header>
     <slot />
@@ -102,6 +126,7 @@ const { title, description, active = 'home' } = Astro.props;
   }
   .site-header nav {
     display: flex;
+    align-items: center;
     gap: 1.25rem;
   }
   .site-header nav a {
@@ -113,6 +138,16 @@ const { title, description, active = 'home' } = Astro.props;
   .site-header nav a:hover,
   .site-header nav a[aria-current='page'] {
     border-bottom-color: var(--terracotta);
+  }
+  .site-header nav a.icon-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--terracotta);
+    border-bottom: none;
+    padding: 0;
+  }
+  .site-header nav a.icon-link:hover {
+    color: var(--terracotta-deep);
   }
   main {
     max-width: 68rem;
