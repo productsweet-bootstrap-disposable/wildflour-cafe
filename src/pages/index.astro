@@ -1,5 +1,7 @@
 ---
 import Base from '../layouts/Base.astro';
+import TodaysSpecialBanner from '../components/TodaysSpecialBanner.astro';
+import { siteConfig } from '../data/site-config';
 
 const faqs = [
   {
@@ -37,6 +39,8 @@ const faqs = [
       </p>
       <a class="cta" href="/menu">See today's menu</a>
     </section>
+
+    <TodaysSpecialBanner text={siteConfig.todaysSpecial} />
 
     <section class="features" aria-label="What we do">
       <article>
