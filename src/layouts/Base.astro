@@ -1,5 +1,5 @@
 ---
-import { openingHours } from '../data/hours';
+import { openingHours, getTodayHours } from '../data/hours';
 
 interface Props {
   title: string;
@@ -7,6 +7,7 @@ interface Props {
   active?: 'home' | 'menu';
 }
 const { title, description, active = 'home' } = Astro.props;
+const todayHours = getTodayHours();
 ---
 <!doctype html>
 <html lang="en">
@@ -52,6 +53,9 @@ const { title, description, active = 'home' } = Astro.props;
           </svg>
         </a>
       </nav>
+      <p class="header-hours" aria-label="Today's opening hours">
+        Open today: {todayHours.hours}
+      </p>
     </header>
     <slot />
     <footer class="site-footer">
@@ -149,6 +153,24 @@ const { title, description, active = 'home' } = Astro.props;
   .site-header nav a.icon-link:hover {
     color: var(--terracotta-deep);
   }
+  /* Desktop-only "Open today" hint. Reserves a fixed min-height/line-height
+     slot so hydration never causes a layout shift; hidden below the md
+     breakpoint per the design system's responsive rules. */
+  .header-hours {
+    display: none;
+    margin: 0;
+    min-height: 1.25rem;
+    line-height: 1.25rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--terracotta-deep);
+    white-space: nowrap;
+  }
+  @media (min-width: 768px) {
+    .header-hours {
+      display: block;
+    }
+  }
   main {
     max-width: 68rem;
     margin: 0 auto;
@@ -163,6 +185,7 @@ const { title, description, active = 'home' } = Astro.props;
   }
   .site-footer .hours {
     margin: 0 0 0.75rem;
+    min-height: 1.5rem;
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem 0.6rem;
@@ -178,9 +201,11 @@ const { title, description, active = 'home' } = Astro.props;
   }
   .hours-entry {
     font-size: 0.95rem;
+    color: var(--terracotta);
   }
   .hours-sep {
     opacity: 0.5;
+    color: var(--terracotta-deep);
   }
   .site-footer .fine {
     font-size: 0.85rem;
