@@ -57,7 +57,13 @@ Optional at first intake. Fill this in during refinement before generating a dev
 
 ## Questions
 
-Optional at first intake. Fill this in during refinement before generating a dev task in `backlog`.
+```yaml
+- question: 'Digital gift cards (email delivery), physical (in-store cards), or both? Recommendation: start with digital-only for faster launch and easier fulfillment, add physical later if demand supports it.'
+  status: open
+  thread:
+    - role: user
+      text: 'Digital gift cards (email delivery), physical (in-store cards), or both? Recommendation: start with digital-only for faster launch and easier fulfillment, add physical later if demand supports it.'
+```
 
 ## Refinement Notes
 
