@@ -48,10 +48,12 @@ generic hello@ email buried in the footer.
 
 ## Completion Notes
 
-- Outcome: Added a `#wholesale` section to `src/pages/index.astro` between "Visit us" and "FAQ" describing the wholesale offer (standing weekly orders, 6-loaf minimum, pickup/delivery by arrangement) with a `mailto:hello@wildflourcafe.nz?subject=Wholesale%20enquiry` CTA. Removed the redundant wholesale mention from the "Visit us" email line since it now has its own section. Also removed a stale duplicate kanban file `.kanban/doing/PS-0WX5H0-019-implement-homepage-faq-section.md` (already completed and present in `.kanban/done/`) that was failing the repo's duplicate-task-id CI check on the branch.
-- Verification actually run: PR #9 CI (`pr-gate`) is green on head commit 7458e3baba1062718733d73a2c6cea4b36b131b2. No local test execution is available to this agent — GitHub Actions CI on the PR is the verification. Section renders with proper `<h2>Wholesale</h2>` heading hierarchy consistent with sibling sections; mailto CTA has pre-filled subject `Wholesale%20enquiry`; build passes as part of `pr-gate`.
+- Outcome: Added a `#wholesale` section to `src/pages/index.astro` between "Visit us" and "FAQ" describing the wholesale offer (standing weekly orders, 6-loaf minimum, pickup/delivery by arrangement) with a `mailto:hello@wildflourcafe.nz?subject=Wholesale%20enquiry` CTA. Removed the redundant wholesale mention from the "Visit us" email line since it now has its own section.
+- Verification actually run: PR #9 CI (`pr-gate`) was green on head commit 7458e3b. Merged (squash) into `main` as commit da09d57a at 2026-07-12T03:46:01Z. Confirmed via `repo.get-commit(da09d57a)` — message "Add wholesale enquiry section (PS-0WX5H0-011) (#9)", touching `src/pages/index.astro`. Deploy-low workflow on main succeeded per human confirmation; wholesale section is live on the deployed site.
 - Documentation updated: none required beyond the task file itself; no architecture/C4 impact (content-only change to an existing Astro page).
-- Follow-up tasks created: none. PR: https://github.com/productsweet-bootstrap-disposable/wildflour-cafe/pull/9 — not merged; awaiting human merge per Definition of Done gate.
+- Follow-up tasks created: none.
+- Merged PR: #9 (https://github.com/productsweet-bootstrap-disposable/wildflour-cafe/pull/9), commit da09d57a
+- Reviewed by: `pr-gate` CI check (green) + human merge
 
 ## Definition of Done Gate
 
