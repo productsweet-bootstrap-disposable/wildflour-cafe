@@ -48,8 +48,9 @@ Add a static FAQ section component to the homepage template, positioned after "V
 
 ## Completion Notes
 
-- Outcome: Implemented FAQ section in `src/pages/index.astro`, positioned between "Visit us" and the footer, using the exact copy specified (bookings, gluten-free, whole cakes, parking). Styled per design system: no hard divider lines, alternating surface tint (`--flour`) for separation, left-aligned text, consistent typography/spacing with existing sections.
-- PR: https://github.com/productsweet-bootstrap-disposable/wildflour-cafe/pull/7 (branch `feature/PS-0WX5H0-019`), merged to `main` via commit `2debeda8a36fde406b97c65c08681d309d83da9c`.
-- Verification actually run: PR CI (`pr-gate`) passed; PR merged; deploy-low succeeded and the FAQ section is confirmed live on the homepage in production.
-- Documentation updated: None required — content/UI-only change.
-- Follow-up tasks created: None.
+Outcome: No implementation was needed — the homepage FAQ section already exists on `main` (`src/pages/index.astro`), positioned between the "Visit us" section and the closing `</main>` (i.e. before the footer, which lives in the shared Base layout). It contains exactly the four required Q&A pairs, in the specified order, with the exact copy from the task. Styling follows the design system: no divider lines, alternating background tint (`.faq-item:nth-child(even)`) for separation, left-aligned text, standard heading/body typography.
+
+Verification actually run: No local test execution is available to this agent; since no code change was required, no new PR/CI run was needed either. Verified by reading `src/pages/index.astro` directly from the `main` branch via `repo.read-file` and `repo.search` (confirmed only one FAQ implementation, no duplicates, no stray content). Visual/responsive check was not run (no live preview tool available for this repo in this session) — if desktop/mobile visual regression assurance is required, a human should do a quick visual pass on the deployed homepage.
+
+Documentation updated: None needed — no code or doc changes made.
+Follow-up tasks created: None.
