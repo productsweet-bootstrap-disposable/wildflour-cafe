@@ -43,3 +43,12 @@ Extend the shared header component to read src/data/hours.ts, compute "today", a
 - Desktop viewport shows "Open today: …" in the header; the hint is hidden at mobile/narrow viewports.
 - Lighthouse/CLS check (or manual DevTools layout-shift check) confirms no measurable layout shift attributable to the header hint or footer line on load.
 - Editing src/data/hours.ts and redeploying updates both the header hint and footer line without touching component logic.
+
+## Completion Notes
+
+- Outcome: Implemented header desktop-only "Open today: …" hint and refined footer hours styling (warm accent tokens, no-CLS reserved sizing) reusing src/data/hours.ts as sole source of truth. PR #12: https://github.com/productsweet-bootstrap-disposable/wildflour-cafe/pull/12 (branch feature/PS-0WX5H0-032).
+- Verification actually run: PR CI (`pr-gate`) was triggered and was still `in_progress` when this session ended after 3 polls — no local test execution is available to this agent. CI is the only verification surface; result not yet known. Do NOT treat this as ci:verify green.
+- Verification pending: someone must poll PR #12 (repo.poll-actions-status) until it resolves, and if red, use repo.get-failing-checks to fix. Manual/DevTools CLS check and cross-page hours-line visual check from the Verification Plan were not run live (no live browser check tool used) — recommend a manual pass before merge, per verification_tier if smoke/live is required.
+- Note: task started in `backlog`; `task.promote-to-todo` call timed out (Sandbox.Timedout) so the card could not be moved through todo->doing lanes before implementation. Proceeded with implementation per instructions to avoid stalling; board still shows this task outside doing/todo. A human should manually move the card once promotion succeeds.
+- Documentation updated: none required — no architecture/C4 change (pure frontend content/styling change to existing header/footer, no new data model or system boundary change).
+- Follow-up tasks created: none.
