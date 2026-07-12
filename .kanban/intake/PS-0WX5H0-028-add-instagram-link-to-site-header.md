@@ -3,7 +3,7 @@ title: Add Instagram link to site header
 id: PS-0WX5H0-028
 status: intake
 template_type: feature-request
-intake_state: refining
+intake_state: ready-for-dev
 delivery_task_ids: []
 created: 2026-07-12
 updated: 2026-07-12
