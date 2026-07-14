@@ -3,7 +3,7 @@ title: Newsletter signup note in homepage footer
 id: PS-0WX5H0-038
 status: intake
 template_type: feature-request
-intake_state: refining
+intake_state: ready-for-dev
 delivery_task_ids: []
 created: 2026-07-14
 updated: 2026-07-14
