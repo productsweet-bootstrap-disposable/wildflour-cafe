@@ -4,7 +4,8 @@ id: PS-0WX5H0-034
 status: intake
 template_type: feature-request
 intake_state: ready-for-dev
-delivery_task_ids: []
+delivery_task_ids:
+  - PS-0WX5H0-036
 created: 2026-07-14
 updated: 2026-07-14
 priority: medium
