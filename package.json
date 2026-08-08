@@ -10,13 +10,20 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "typecheck": "astro check"
+    "typecheck": "astro check",
+    "ci:verify": "npm run typecheck && npm test && npm run build",
+    "test": "vitest run"
   },
   "dependencies": {
     "astro": "^5.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "@testing-library/dom": "10.4.0",
+    "@testing-library/jest-dom": "6.6.3",
+    "@types/jsdom": "21.1.7",
+    "jsdom": "25.0.1",
+    "vitest": "3.2.7"
   }
 }
