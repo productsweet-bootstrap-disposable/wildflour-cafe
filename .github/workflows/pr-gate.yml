@@ -21,15 +21,29 @@
 #   BUILD_COMMAND    e.g. `npm run build`
 name: pr-gate
 
+# AI6P-2322 — it ALSO runs on pushes to `main`. Product Sweet's task-completion
+# gate observes CI for the EXACT merged sha recorded on the card, and a squash
+# merge creates a brand-new commit that a `pull_request`-only workflow never
+# reports against. Without this trigger the required context is simply absent on
+# every merge commit, the gate reads `ci-pending` forever, and a delivered card
+# can only be closed by an explicit human waiver — the audited exception becoming
+# the only path. The PR run still gates the merge; this run is what makes the
+# shipping commit provable afterwards.
 on:
   pull_request:
+    branches: [main]
+  push:
     branches: [main]
 
 permissions:
   contents: read
 
 concurrency:
-  group: pr-gate-${{ github.event.pull_request.number }}
+  # `github.sha` on a push (there is no pull_request payload). Without the
+  # fallback every main push shares one empty-suffixed group and, with
+  # cancel-in-progress, a second merge CANCELS the first merge commit's run —
+  # leaving that commit with no conclusion, which is the very wedge above.
+  group: pr-gate-${{ github.event.pull_request.number || github.sha }}
   cancel-in-progress: true
 
 jobs:
@@ -104,8 +118,13 @@ jobs:
       - name: Classify changed paths
         id: classify
         env:
-          BASE: ${{ github.event.pull_request.base.sha }}
-          HEAD: ${{ github.event.pull_request.head.sha }}
+          # AI6P-2322 — on a push there is no pull_request payload, so fall back to
+          # the push range (`before`..`sha`), which is exactly the commits that just
+          # landed. Without the fallback both are empty, the fail-safe below fires,
+          # and EVERY main push runs the full build lane — turning a content-only
+          # merge into a full CI run for no coverage gain.
+          BASE: ${{ github.event.pull_request.base.sha || github.event.before }}
+          HEAD: ${{ github.event.pull_request.head.sha || github.sha }}
         run: |
           set -euo pipefail
 
@@ -164,18 +183,31 @@ jobs:
       - name: Content lane (lint + typecheck + test)
         if: steps.classify.outputs.content_only == 'true'
         # Docs / kanban content can't change the framework build output, so the
-        # content lane skips the (expensive) static-site build. lint/typecheck/
-        # test still run via `--if-present` so a content PR that happens to also
-        # touch a test/config still gets covered.
+        # content lane skips the (expensive) static-site build.
+        #
+        # AI6P-2113: lint and test are rendered from the framework's declared
+        # commands, NOT `--if-present`. `--if-present` reports success for a step
+        # that never ran, so the required check claimed coverage it did not have —
+        # the same class as AI6P-661, a gate that passes for the wrong reason.
+        # Where a framework genuinely seeds no linter or test runner the template
+        # says so out loud instead of quietly skipping.
         run: |
-          npm run lint --if-present
-          npm run typecheck --if-present
-          npm test --if-present
+          echo "no linter seeded for this framework — skipping"
+          npm run typecheck
+          npm test
 
       - name: Full lane (lint + typecheck + test + build)
         if: steps.classify.outputs.content_only == 'false'
+        # AI6P-2112: the CI build, NOT the deploy build. This job declares
+        # `permissions: contents: read` with no `id-token: write` and no
+        # `configure-aws-credentials` step, so it can never hold AWS credentials.
+        # The deploy build starts with `gen-aws-config.mjs`, which reads the
+        # runtime-config contract from SSM and fails closed — running it here
+        # made every full-lane PR fail with `NoCredentials` regardless of its
+        # content, on the one always-on required status check. Config resolution
+        # is deploy-time; a PR gate answers "does the code compile and bundle".
         run: |
-          npm run lint --if-present
-          npm run typecheck --if-present
-          npm test --if-present
+          echo "no linter seeded for this framework — skipping"
+          npm run typecheck
+          npm test
           npm run build
