@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "eventType": "completion-derived",
+  "taskId": "PS-0WX5H0-013",
+  "disposition": "verified",
+  "basis": "all-delivery-tasks-terminal",
+  "deliveryTaskIds": [
+    "PS-0WX5H0-015",
+    "PS-0WX5H0-032"
+  ],
+  "actor": {
+    "kind": "system",
+    "id": "intake-auto-close-sweep"
+  },
+  "at": "2026-10-17T12:05:20.840Z",
+  "eventId": "8564486900fa6d901779"
+}
