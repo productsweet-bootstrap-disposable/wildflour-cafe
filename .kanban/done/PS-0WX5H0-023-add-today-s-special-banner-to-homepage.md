@@ -1,11 +1,8 @@
 ---
 title: Add "Today's Special" banner to homepage
 id: PS-0WX5H0-023
-status: intake
+status: done
 template_type: feature-request
-intake_state: ready-for-dev
-delivery_task_ids:
-  - PS-0WX5H0-025
 created: 2026-07-12
 updated: 2026-07-12
 priority: medium
@@ -55,3 +52,13 @@ Optional at first intake. Fill this in during refinement before generating a dev
 ## Refinement Notes
 
 Optional at first intake. Fill this in during refinement before generating a dev task in `backlog`.
+
+## Implementation Plan
+
+Grooming / intake item — no code of its own. Delivery was carried by PS-0WX5H0-025.
+
+## Completion Notes
+
+- Outcome: Closed automatically as delivered — every dev task linked to this idea (PS-0WX5H0-025) is `done` and at least one of them was completed rather than cancelled, so this idea was moved `intake/` → `done/`.
+- Verification actually run: Linked dev tasks confirmed `done`, with at least one completed rather than cancelled, before the move; the generated `done/` file shape satisfies `lint:kanban-structure`.
+- Documentation updated: none — automated closure of a delivered intake item.
