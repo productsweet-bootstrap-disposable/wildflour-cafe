@@ -1,11 +1,8 @@
 ---
 title: Newsletter signup note in homepage footer
 id: PS-0WX5H0-038
-status: intake
+status: done
 template_type: feature-request
-intake_state: ready-for-dev
-delivery_task_ids:
-  - PS-0WX5H0-040
 created: 2026-07-14
 updated: 2026-07-14
 priority: low
@@ -52,3 +49,13 @@ Optional at first intake. Fill this in during refinement before generating a dev
 ## Refinement Notes
 
 Story is small, self-contained, and unambiguous — no open questions. Approved by requester to go straight to ready-for-dev with a linked implementation task.
+
+## Implementation Plan
+
+Grooming / intake item — no code of its own. Delivery was carried by PS-0WX5H0-040.
+
+## Completion Notes
+
+- Outcome: Closed automatically as delivered — every dev task linked to this idea (PS-0WX5H0-040) is `done` and at least one of them was completed rather than cancelled, so this idea was moved `intake/` → `done/`.
+- Verification actually run: Linked dev tasks confirmed `done`, with at least one completed rather than cancelled, before the move; the generated `done/` file shape satisfies `lint:kanban-structure`.
+- Documentation updated: none — automated closure of a delivered intake item.
