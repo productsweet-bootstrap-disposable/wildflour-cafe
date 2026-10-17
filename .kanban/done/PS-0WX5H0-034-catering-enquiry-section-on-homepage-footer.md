@@ -1,11 +1,8 @@
 ---
 title: Catering enquiry section on homepage footer
 id: PS-0WX5H0-034
-status: intake
+status: done
 template_type: feature-request
-intake_state: ready-for-dev
-delivery_task_ids:
-  - PS-0WX5H0-036
 created: 2026-07-14
 updated: 2026-07-14
 priority: medium
@@ -56,3 +53,13 @@ Optional at first intake. Fill this in during refinement before generating a dev
 ## Refinement Notes
 
 Request is fully specified (heading + one sentence + mailto to hello@wildflour.cafe, placement near footer) — no open questions. Advancing straight to ready-for-dev with a linked implementation task per user instruction.
+
+## Implementation Plan
+
+Grooming / intake item — no code of its own. Delivery was carried by PS-0WX5H0-036.
+
+## Completion Notes
+
+- Outcome: Closed automatically as delivered — every dev task linked to this idea (PS-0WX5H0-036) is `done` and at least one of them was completed rather than cancelled, so this idea was moved `intake/` → `done/`.
+- Verification actually run: Linked dev tasks confirmed `done`, with at least one completed rather than cancelled, before the move; the generated `done/` file shape satisfies `lint:kanban-structure`.
+- Documentation updated: none — automated closure of a delivered intake item.
